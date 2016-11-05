@@ -1,3 +1,8 @@
+" INSTALL PLUG-INSTALL:
+"curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
 "act similar to mswin applications, Control+C, Control+P, etc.
 behave mswin
 
