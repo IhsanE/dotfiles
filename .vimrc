@@ -1,8 +1,3 @@
-" INSTALL PLUG-INSTALL:
-"curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-
 "act similar to mswin applications, Control+C, Control+P, etc.
 behave mswin
 
@@ -206,4 +201,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'wincent/command-t'
 Plug 'Valloric/YouCompleteMe'
 Plug 'ap/vim-buftabline'
+Plug 'rking/ag.vim'
 call plug#end()
+
+let g:ag_working_path_mode="r"
