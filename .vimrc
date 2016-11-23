@@ -7,8 +7,10 @@ set nocompatible
 "don't create ~filename backups, very annoying to leave this on and find dozens of extra files scattered about
 set nobackup
 
-colorscheme moriarty
+"colorscheme moriarty
+
 syntax on
+colorscheme dracula 
 
 "enable the mouse & features
 "set mouse=a
@@ -205,6 +207,7 @@ Plug 'wincent/command-t'
 Plug 'Valloric/YouCompleteMe'
 Plug 'ap/vim-buftabline'
 Plug 'rking/ag.vim'
+Plug 'dracula/vim'
 call plug#end()
 
 let g:ag_working_path_mode="r"
