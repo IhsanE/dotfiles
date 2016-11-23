@@ -201,6 +201,10 @@ ca S sort i
 " 2) Restart vim
 " 3) Type :PlugInstall
 " 4) Things should be installing if you define your plugins as below
+" ** NOTE: Might need to install ruby, go into ruby/command-t folder then do:
+"       1) ruby extconf.rb
+"       2) make
+"       3) Should work! :)
 
 call plug#begin('~/.vim/plugged')
 Plug 'wincent/command-t'
