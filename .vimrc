@@ -121,6 +121,9 @@ autocmd FileType html set wrap|set tabstop=2|set shiftwidth=2|set softtabstop=2|
 autocmd BufNewFile,BufRead *.lib set syntax=txt 
 autocmd BufNewFile,BufRead *.feature set wrap
 
+noremap cc :norm i
+noremap CC :norm ^x<CR> 
+
 func! Linewrap()
   :set wrap
   :set linebreak
