@@ -7,10 +7,6 @@ set nocompatible
 "don't create ~filename backups, very annoying to leave this on and find dozens of extra files scattered about
 set nobackup
 
-"colorscheme moriarty
-
-syntax on
-colorscheme dracula 
 
 "enable the mouse & features
 "set mouse=a
@@ -18,7 +14,6 @@ set selectmode-=mouse "Use the mouse just like visual mode, so you can use vim c
 
 "This is should match your terminal background, white-on-black is the default
 "vim setting. For black-on-white choose 'light'
-set background=dark
 "set background=light
 
 
@@ -118,7 +113,7 @@ set expandtab ts=4 sw=4 ai
 autocmd FileType python set tabstop=4|set shiftwidth=4|set softtabstop=4|set expandtab|set colorcolumn=80|set nosmartindent
 autocmd FileType c set ts=4|set sw=4|set noexpandtab
 autocmd FileType java set wrap|set colorcolumn=
-autocmd FileType javascript set wrap|set tabstop=4|set shiftwidth=4|set softtabstop=4|set colorcolumn=100|set expandtab
+autocmd FileType javascript set wrap|set tabstop=4|set shiftwidth=4|set softtabstop=4|set colorcolumn=125|set expandtab
 autocmd FileType html set wrap|set tabstop=2|set shiftwidth=2|set softtabstop=2|set colorcolumn=|set expandtab
 autocmd BufNewFile,BufRead *.lib set syntax=txt 
 autocmd BufNewFile,BufRead *.feature set wrap
@@ -201,17 +196,22 @@ ca S sort i
 " 2) Restart vim
 " 3) Type :PlugInstall
 " 4) Things should be installing if you define your plugins as below
-" ** NOTE: Might need to install ruby, go into ruby/command-t folder then do:
-"       1) ruby extconf.rb
-"       2) make
-"       3) Should work! :)
 
 call plug#begin('~/.vim/plugged')
 Plug 'wincent/command-t'
 Plug 'Valloric/YouCompleteMe'
 Plug 'ap/vim-buftabline'
 Plug 'rking/ag.vim'
-Plug 'dracula/vim'
+Plug 'acoustichero/goldenrod.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:ag_working_path_mode="r"
+
+syntax on 
+set background=dark
+colorscheme goldenrod 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dark'
