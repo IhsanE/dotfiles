@@ -159,7 +159,6 @@ autocmd BufWrite *.js :call DWS()
 autocmd BufWrite *.feature :call DWS()
 autocmd BufWrite *.scss :call DWS()
 
-execute pathogen#infect()
 " Fix saving issues
 :ca WQ wq
 :ca Wq wq
@@ -198,7 +197,9 @@ ca S sort i
 " 4) Things should be installing if you define your plugins as below
 
 call plug#begin('~/.vim/plugged')
-Plug 'wincent/command-t'
+Plug 'wincent/command-t', {
+  \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+  \ }
 Plug 'Valloric/YouCompleteMe'
 Plug 'ap/vim-buftabline'
 Plug 'rking/ag.vim'
@@ -215,3 +216,4 @@ set background=dark
 colorscheme goldenrod 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
+let &t_Co=256
