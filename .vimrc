@@ -197,16 +197,14 @@ ca S sort i
 " 4) Things should be installing if you define your plugins as below
 
 call plug#begin('~/.vim/plugged')
-Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
-  \ }
-Plug 'Valloric/YouCompleteMe'
 Plug 'ap/vim-buftabline'
 Plug 'rking/ag.vim'
 Plug 'acoustichero/goldenrod.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 let g:ag_working_path_mode="r"
@@ -217,3 +215,16 @@ colorscheme goldenrod
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
 let &t_Co=256
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+    set grepprg=ag\ --nogroup
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+    endif
+
+let g:ctrlp_map = '\t'
