@@ -205,6 +205,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/neocomplete.vim'
 call plug#end()
 
 let g:ag_working_path_mode="r"
@@ -228,3 +229,5 @@ if executable('ag')
     endif
 
 let g:ctrlp_map = '\t'
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
