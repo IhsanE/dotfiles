@@ -74,17 +74,6 @@ function! Automake()
 '" | redraw!
 endfunction
 
-" Autocompletion using the TAB key
-" This function determines, whether we are on the start of the line text (then tab indents) or
-" if we want to try autocompletion
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
 " Remap the tab key to select action with InsertTabWrapper
 "inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
@@ -231,3 +220,4 @@ if executable('ag')
 let g:ctrlp_map = '\t'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
+let g:omni_sql_no_default_maps = 1
