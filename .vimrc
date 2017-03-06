@@ -220,4 +220,3 @@ if executable('ag')
 let g:ctrlp_map = '\t'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
-let g:omni_sql_no_default_maps = 1
