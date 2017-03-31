@@ -119,18 +119,6 @@ func! Linewrap()
   match
 endfunc
 
-" The Silver Searcher
-if executable('ag')
-    " Use ag over grep
-    set grepprg=ag\ --nogroup\ --no:
-
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-endif
-
 :imap jj <Esc>
 
 " Delete trailing white space
@@ -173,7 +161,6 @@ set clipboard=unnamed
 au BufRead,BufNewFile *.g set syntax=antlr3
 au BufRead,BufNewFile *.groovy set wrap
 
-set path=.,/usr/include,/Users/thiago/projects/thm-dev/THM/frontend_v2/js/**,,
 ca F find
 ca S sort i
 
@@ -187,7 +174,6 @@ ca S sort i
 
 call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-buftabline'
-Plug 'rking/ag.vim'
 Plug 'acoustichero/goldenrod.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -195,9 +181,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/neocomplete.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'valloric/matchtagalways'
 call plug#end()
 
-let g:ag_working_path_mode="r"
 
 syntax on 
 set background=dark
@@ -207,16 +194,48 @@ let g:airline_theme='dark'
 let &t_Co=256
 " The Silver Searcher
 if executable('rg')
-  " Use ag over grep
-    set grepprg=ag\ --nogroup
+  " Use rg over grep
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'rg %s -l -g ""'
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
+  " rg is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
     endif
 
 let g:ctrlp_map = '\t'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'js' : 1,
+    \ 'javascript' : 1,
+    \ 'es6' : 1,
+    \}
