@@ -106,6 +106,7 @@ autocmd FileType javascript set wrap|set tabstop=4|set shiftwidth=4|set softtabs
 autocmd FileType html set wrap|set tabstop=2|set shiftwidth=2|set softtabstop=2|set colorcolumn=|set expandtab
 autocmd BufNewFile,BufRead *.lib set syntax=txt 
 autocmd BufNewFile,BufRead *.feature set wrap
+autocmd BufNewFile,BufRead *.es6 set syntax=javascript
 
 noremap cc :norm i
 noremap CC :norm ^x<CR> 
@@ -179,10 +180,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'valloric/matchtagalways'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 
@@ -197,15 +199,8 @@ if executable('rg')
   " Use rg over grep
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
-
-  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-
-  " rg is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
     endif
 
-let g:ctrlp_map = '\t'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:rbpt_colorpairs = [
@@ -239,3 +234,6 @@ let g:mta_filetypes = {
     \ 'javascript' : 1,
     \ 'es6' : 1,
     \}
+
+nnoremap <silent> <Leader>t :FZF<CR>
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
