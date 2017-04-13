@@ -185,6 +185,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'valloric/matchtagalways'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 
