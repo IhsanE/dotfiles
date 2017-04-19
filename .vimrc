@@ -9,7 +9,7 @@ set nobackup
 
 
 "enable the mouse & features
-"set mouse=a
+set mouse=a
 set selectmode-=mouse "Use the mouse just like visual mode, so you can use vim commands on mouse selections, eg. 'x' to cut and 'y' to yank
 
 "This is should match your terminal background, white-on-black is the default
