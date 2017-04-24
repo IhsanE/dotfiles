@@ -188,6 +188,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'duganchen/vim-soy'
+Plug 'matze/vim-move'
 call plug#end()
 
 
@@ -243,3 +244,4 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 nnoremap <C-f> :Find <C-R><C-W><CR>:cw<CR>
 vnoremap <C-f> y:Find <C-R>"<CR>:cw<CR>
+let g:move_key_modifier = 'C'
