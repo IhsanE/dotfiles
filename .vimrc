@@ -178,6 +178,7 @@ Plug 'ap/vim-buftabline'
 Plug 'acoustichero/goldenrod.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/neocomplete.vim'
@@ -186,6 +187,7 @@ Plug 'valloric/matchtagalways'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'duganchen/vim-soy'
 call plug#end()
 
 
