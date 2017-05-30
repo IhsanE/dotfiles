@@ -241,6 +241,6 @@ let g:mta_filetypes = {
 nnoremap <silent> <Leader>t :FZF<CR>
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-nnoremap <C-f> :Find <C-R><C-W><CR>:cw<CR>
-vnoremap <C-f> y:Find <C-R>"<CR>:cw<CR>
+nnoremap <C-f> :Find <C-R><C-W><CR>
+vnoremap <C-f> y:Find <C-R>"<CR>
 let g:move_key_modifier = 'C'
