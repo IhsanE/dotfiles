@@ -125,6 +125,9 @@ behave mswin
 "its ok to not be vi compatibale
 set nocompatible
 
+"disable swap file creation
+set noswapfile
+
 "don't create ~filename backups, very annoying to leave this on and find dozens of extra files scattered about
 set nobackup
 
