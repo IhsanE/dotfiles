@@ -17,11 +17,11 @@ g, —> jumps back to a previously edited section of file (reverse order of g;)
 
 m<a, b, c, …> —> Mark location in file
 
-,<a, b, c, …> —> Jump to location in file
+'<a, b, c, …> —> Jump to location in file
 
 m<A, B, C, …> —> Mark location in file globally
 
-,<A, B, C, …> —> Jump to file
+'<A, B, C, …> —> Jump to file
 
 shift + D —> Deletes from current position until end of line
 
