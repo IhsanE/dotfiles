@@ -43,7 +43,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'duganchen/vim-soy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Ivo-Donchev/vim-react-goto-definition'
 call plug#end()
 
 
@@ -211,4 +210,3 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-noremap <leader>D :call ReactGotoDef()<CR>
