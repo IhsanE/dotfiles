@@ -1,4 +1,4 @@
-" $$$$$$\ $$\   $$\  $$$$$$\   $$$$$$\  $$\   $$\ 
+" $$$$$$\ $$\   $$\  $$$$$$\   $$$$$$\  $$\   $$\
 " \_$$  _|$$ |  $$ |$$  __$$\ $$  __$$\ $$$\  $$ |
 "   $$ |  $$ |  $$ |$$ /  \__|$$ /  $$ |$$$$\ $$ |
 "   $$ |  $$$$$$$$ |\$$$$$$\  $$$$$$$$ |$$ $$\$$ |
@@ -6,17 +6,17 @@
 "   $$ |  $$ |  $$ |$$\   $$ |$$ |  $$ |$$ |\$$$ |
 " $$$$$$\ $$ |  $$ |\$$$$$$  |$$ |  $$ |$$ | \$$ |
 " \______|\__|  \__| \______/ \__|  \__|\__|  \__|
-                                                
-"                 2017-07-12                                 
-                                                
-"       $$\    $$\ $$$$$$\ $$\      $$\           
-"       $$ |   $$ |\_$$  _|$$$\    $$$ |          
-"       $$ |   $$ |  $$ |  $$$$\  $$$$ |          
-"       \$$\  $$  |  $$ |  $$\$$\$$ $$ |          
-"        \$$\$$  /   $$ |  $$ \$$$  $$ |          
-"         \$$$  /    $$ |  $$ |\$  /$$ |          
-"          \$  /   $$$$$$\ $$ | \_/ $$ |          
-"           \_/    \______|\__|     \__|   
+
+"                 2017-07-12
+
+"       $$\    $$\ $$$$$$\ $$\      $$\
+"       $$ |   $$ |\_$$  _|$$$\    $$$ |
+"       $$ |   $$ |  $$ |  $$$$\  $$$$ |
+"       \$$\  $$  |  $$ |  $$\$$\$$ $$ |
+"        \$$\$$  /   $$ |  $$ \$$$  $$ |
+"         \$$$  /    $$ |  $$ |\$  /$$ |
+"          \$  /   $$$$$$\ $$ | \_/ $$ |
+"           \_/    \______|\__|     \__|
 "
 
 " REQUIREMENT: VIM-PLUG
@@ -36,13 +36,14 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Shougo/neocomplete.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'valloric/matchtagalways'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'duganchen/vim-soy'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Ivo-Donchev/vim-react-goto-definition'
 call plug#end()
 
 
@@ -71,14 +72,12 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 nnoremap <C-f> :Find <C-R><C-W><CR>:cw<CR>
 vnoremap <C-f> y:Find <C-R>"<CR>:cw<CR>
 
-
-
-colorscheme goldenrod 
-let g:airline_theme='dark'
+colorscheme goldenrod
+let g:airline_theme='cobalt2'
 let &t_Co=256
+let g:airline_powerline_fonts = 1
 
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
+"kien/rainbow_parentheses.vim
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
@@ -97,12 +96,13 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
-
+"Keep rainbow_parentheses always on
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+"valloric/matchtagalways
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
@@ -112,12 +112,6 @@ let g:mta_filetypes = {
     \ 'javascript' : 1,
     \ 'es6' : 1,
     \}
-
-" Persistent undo/redo
-let undo_dir = "~/.vim/undodir"
-execute "silent ! mkdir -p" . undo_dir
-execute "silent set undodir=" . undo_dir
-set undofile
 
 "act similar to mswin applications, Control+C, Control+P, etc.
 behave mswin
@@ -134,7 +128,6 @@ set nobackup
 "enable the mouse & features
 set mouse=a
 set selectmode-=mouse "Use the mouse just like visual mode, so you can use vim commands on mouse selections, eg. 'x' to cut and 'y' to yank
-
 set backspace=2 "backspace works in insert mode, much more user-friendly
 set tabstop=4 "set tab width to 4 spaces
 set shiftwidth=4 "set (auto)tab's to width of 4 spaces
@@ -160,8 +153,8 @@ filetype on
 filetype indent on
 filetype plugin on
 
+" Have Vim jump to the last position when reopening a file
 if has("autocmd")
-    " Have Vim jump to the last position when reopening a file
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
       \| exe "normal! g'\"" | endif
 endif
@@ -172,11 +165,9 @@ autocmd FileType c set ts=4|set sw=4|set noexpandtab
 autocmd FileType java set wrap|set colorcolumn=120
 autocmd FileType javascript set wrap|set tabstop=4|set shiftwidth=4|set softtabstop=4|set colorcolumn=125|set expandtab
 autocmd FileType html set wrap|set tabstop=2|set shiftwidth=2|set softtabstop=2|set colorcolumn=|set expandtab
-autocmd BufNewFile,BufRead *.lib set syntax=txt 
+autocmd BufNewFile,BufRead *.lib set syntax=txt
 autocmd BufNewFile,BufRead *.feature set wrap
 autocmd BufNewFile,BufRead *.es6 set syntax=javascript
-
-:imap jj <Esc>
 
 " Delete trailing white space
 func! DWS()
@@ -200,16 +191,24 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-nnoremap <C-N> :bnext<CR> 
-nnoremap <C-B> :bprev<CR> 
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-B> :bprev<CR>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 set clipboard=unnamed
 set noshowmode
-syntax on 
+syntax on
 set background=dark
 
 ca F find
 ca S sort i
+
+" neoclide/coc.nvim
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+noremap <leader>D :call ReactGotoDef()<CR>
