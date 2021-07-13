@@ -30,7 +30,6 @@
 
 call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-buftabline'
-Plug 'acoustichero/goldenrod.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
@@ -42,7 +41,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'duganchen/vim-soy'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
 
 
@@ -71,7 +70,6 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 nnoremap <C-f> :Find <C-R><C-W><CR>
 vnoremap <C-f> y:Find <C-R>"<CR>
 
-colorscheme goldenrod
 let g:airline_theme='cobalt2'
 let &t_Co=256
 let g:airline_powerline_fonts = 1
@@ -210,3 +208,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+set re=0
+
+colorscheme sonokai
